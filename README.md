@@ -86,9 +86,12 @@ error: No such remote: 'origin'
                                                                                                                                                                                                                                            
 ┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
 └─$ git remote add origin https://github.com/GOSICK070404/lab06
-                                                                                                                                                                                                                                           
+                                                                                                                                                           ```
+                                                                                                                                                           ```sh
 ┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
 └─$ nano CPackConfig.cmake
+```
+```sh
  include(InstallRequiredSystemLibraries)
 
 set(CPACK_PACKAGE_CONTACT donotdisturb@yandex.ru)
@@ -111,9 +114,12 @@ set(CPACK_DEBIAN_PACKAGE_NAME "solver")
 set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "cmake >= 3.0")
 set(CPACK_DEBIAN_PACKAGE_VERSION CPACK_PACKAGE_VERSION)
 
-include(CPack)                                                                                                                                                                                                                                          
+include(CPack)                                                                                                                                              ```
+```sh
 ┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
 └─$ nano CMakeLists.txt
+```
+```sh
 cmake_minimum_required(VERSION 3.4)
 project(lab06)
 
@@ -133,12 +139,16 @@ add_executable(solver "solver_application/equation.cpp")
 target_link_libraries(solver solver_lib formatter_ex_lib formatter_lib)
 
 include(CPackConfig.cmake)
-
+```
+```sh
 ┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
 └─$ cd .github/workflows
-                                                                                                                                                                                                                                           
+                                                                                                                                                            ```
+                                                                                                                                                            ```sh
 ┌──(kali㉿kali)-[~/…/lab06/lab04-1/.github/workflows]
 └─$ nano CI.yml
+```
+```sh
   name: CMake
 
 on:
@@ -175,7 +185,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DebRpm
-          path: artifacts/                                                                                                                                                                                                                                         
+          path: artifacts/                                                                                                                                  ```
+```sh
 ┌──(kali㉿kali)-[~/…/lab06/lab04-1/.github/workflows]
 └─$ cd .. 
                                                                                                                                                                                                                                            
