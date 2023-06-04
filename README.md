@@ -1,100 +1,128 @@
-Сейчас вам требуется настроить систему непрерывной интеграции для библиотек и приложений, с которыми вы работали в прошлый раз. Настройте сборочные процедуры на различных платформах:
-
-# Task 1
-Используйте GitHub Actions для сборки на операционной системе Linux с использованием компиляторов gcc и clang
-
-Копируем репозиторий из предыдущей ЛР:
-
-```
-$ git clone https://github.com/GOSICK070404/lab03 lab04
-$ cd ~/lab04
-$ git remote remove origin
-$ git remote add origin https://github.com/GOSICK070404/lab04-1
-```
-
-И создаем папку со следующим путем: `~/lab04/.github/workflows`
-```
-$ mkdir .github/workflows
-$ cd .github/workflows
-```
-
-```
-$ cat >> Linux.yml << EOF
-name: CMake
-
-on:
- push:
-  branches: [master]
- pull_request:
-  branches: [master]
-
-jobs: 
- build_Linux:
-
-  runs-on: ubuntu-latest
-
-  steps:
-  - uses: actions/checkout@v3
-
-  - name: Configure Solver
-    run: cmake ${{github.workspace}}/solver_application/ -B ${{github.workspace}}/solver_application/build
-
-  - name: Build Solver
-    run: cmake --build ${{github.workspace}}/solver_application/build
-
-  - name: Configure HelloWorld
-    run: cmake ${{github.workspace}}/hello_world_application/ -B ${{github.workspace}}/hello_world_application/build
-
-  - name: Build HelloWorld
-    run: cmake --build ${{github.workspace}}/hello_world_application/build
-> EOF
-
-```
-
-```
-$ git add Linux.yml
-$ git commit -m "Linux.yml - 1"
-$ git push origin master
-```
-
-# Task 2
-
-Используйте GitHub Actions для сборки на операционной системе Windows
-
-```
-$ cat >> Windows.yml << EOF
-name: CMake
-
-on:
- push:
-  branches: [master]
- pull_request:
-  branches: [master]
-
-jobs: 
- build_Windows:
-
-  runs-on: windows-latest
-
-  steps:
-  - uses: actions/checkout@v3
-
-  - name: Configure Solver
-    run: cmake ${{github.workspace}}/solver_application/ -B ${{github.workspace}}/solver_application/build
-
-  - name: Build Solver
-    run: cmake --build ${{github.workspace}}/solver_application/build
-
-  - name: Configure HelloWorld
-    run: cmake ${{github.workspace}}/hello_world_application/ -B ${{github.workspace}}/hello_world_application/build
-
-  - name: Build HelloWorld
-    run: cmake --build ${{github.workspace}}/hello_world_application/build
-    > EOF
-```
-
-```
-$ git add Windows.yml
-$ git commit -m "Windows.yml - 1"
-$ git push origin master
-```
+```sh
+┌──(kali㉿kali)-[~]
+└─$ cd /home/kali/GOSICK070404/workspace/projects/
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects]
+└─$  mkdir lab06
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects]
+└─$ cd lab06                                      
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git clone https://github.com/GOSICK070404/lab04-1
+Cloning into 'lab04-1'...
+remote: Enumerating objects: 217, done.
+remote: Counting objects: 100% (217/217), done.
+remote: Compressing objects: 100% (91/91), done.
+remote: Total 217 (delta 116), reused 213 (delta 114), pack-reused 0
+Receiving objects: 100% (217/217), 84.57 KiB | 468.00 KiB/s, done.
+Resolving deltas: 100% (116/116), done.
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git remote remove origin
+fatal: not a git repository (or any of the parent directories): .git
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git remote remove origin
+fatal: not a git repository (or any of the parent directories): .git
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git init                
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/kali/GOSICK070404/workspace/projects/lab06/.git/
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git remote remove origin
+error: No such remote: 'origin'
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git remote add origin https://github.com/GOSICK070404/lab06                    
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git remote remove origin                                   
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ git remote add origin https://github.com/GOSICK070404/lab06
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/GOSICK070404/workspace/projects/lab06]
+└─$ cd lab04-1
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git init                                                   
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/kali/GOSICK070404/workspace/projects/lab06/lab04-1/.git/
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git remote remove origin                                   
+error: No such remote: 'origin'
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git remote add origin https://github.com/GOSICK070404/lab06
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git remote remove origin                                   
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git remote add origin https://github.com/GOSICK070404/lab06
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ nano CPackConfig.cmake
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ nano CMakeLists.txt
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ cd .github/workflows
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/lab06/lab04-1/.github/workflows]
+└─$ nano CI.yml
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/lab06/lab04-1/.github/workflows]
+└─$ cd .. 
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/projects/lab06/lab04-1/.github]
+└─$ cd ..
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git add -A                                                                                                                                                                                                 
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$ git tag v0.5
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$  git push origin main --tags
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/GOSICK070404/lab06'
+                                                                                                                                                                                                                                           
+┌──(kali㉿kali)-[~/…/workspace/projects/lab06/lab04-1]
+└─$  git push origin master --tags
+Username for 'https://github.com': GOSICK070404
+Password for 'https://GOSICK070404@github.com': 
+Enumerating objects: 217, done.
+Counting objects: 100% (217/217), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (205/205), done.
+Writing objects: 100% (217/217), 84.93 KiB | 3.54 MiB/s, done.
+Total 217 (delta 114), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (114/114), done.
+To https://github.com/GOSICK070404/lab06
+ * [new branch]      master -> master
+ * [new tag]         v0.5 -> v0.5
+ ```
