@@ -1,3 +1,7 @@
+## Laboratory work VI by Polyakov Andrey
+
+
+## Homework
 ```sh
 ┌──(kali㉿kali)-[~]
 └─$ cd /home/kali/GOSICK070404/workspace/projects/
@@ -126,3 +130,6 @@ To https://github.com/GOSICK070404/lab06
  * [new branch]      master -> master
  * [new tag]         v0.5 -> v0.5
  ```
+```
+Copyright (c) 2015-2021 The ISC Authors
+```
